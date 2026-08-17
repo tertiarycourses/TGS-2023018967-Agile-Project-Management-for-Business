@@ -1,0 +1,37 @@
+- generic [active] [ref=f4e1]:
+  - button "Toggle theme" [ref=f4e2] [cursor=pointer]: ☀️
+  - generic [ref=f4e3]:
+    - generic [ref=f4e4]:
+      - generic [ref=f4e5]:
+        - generic [ref=f4e6]: 🔍
+        - heading "5 Whys Root Cause Game" [level=1] [ref=f4e7]
+        - paragraph [ref=f4e8]:
+          - text: Practice root cause analysis by answering guided
+          - strong [ref=f4e9]: Why
+          - text: questions. An AI facilitator will help you dig deeper — one question at a time — to uncover the real cause behind any problem.
+      - generic [ref=f4e10]:
+        - heading "Your Problem Statement" [level=2] [ref=f4e11]
+        - paragraph [ref=f4e12]: Describe a real or hypothetical workplace problem to investigate.
+        - generic [ref=f4e13]:
+          - generic [ref=f4e14] [cursor=pointer]: 🐢 Slow customer service
+          - generic [ref=f4e15] [cursor=pointer]: ⏰ Missed deadlines
+          - generic [ref=f4e16] [cursor=pointer]: 😴 Disengaged learners
+          - generic [ref=f4e17] [cursor=pointer]: 🧭 Slow onboarding
+        - generic [ref=f4e18]:
+          - generic [ref=f4e19]: Problem Statement
+          - textbox "Problem Statement" [ref=f4e20]:
+            - /placeholder: e.g. Our monthly reports are often late and contain errors…
+        - generic [ref=f4e21]:
+          - generic [ref=f4e22]: OpenAI API Key
+          - textbox "OpenAI API Key" [ref=f4e23]:
+            - /placeholder: sk-…
+          - generic [ref=f4e24] [cursor=pointer]:
+            - checkbox "Remember my key on this device" [ref=f4e25]
+            - text: Remember my key on this device
+        - button "Start Game →" [ref=f4e26] [cursor=pointer]
+    - text: 🤔
+  - contentinfo [ref=f4e27]:
+    - text: © 2025
+    - link "Tertiary Infotech Academy Pte Ltd" [ref=f4e28] [cursor=pointer]:
+      - /url: https://www.tertiarycourses.com.sg/
+    - text: . All rights reserved.

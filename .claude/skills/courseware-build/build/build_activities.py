@@ -167,7 +167,11 @@ index = []
 
 for a in ACTIVITIES:
     folder = os.path.join(ACTDIR, slugged(a))
-    os.makedirs(os.path.join(folder, "data"), exist_ok=True)
+    os.makedirs(folder, exist_ok=True)
+    # only create data/ when the activity actually ships a dataset — git does not
+    # track empty directories, so an empty data/ would vanish on clone
+    if a["num"] in DATASETS:
+        os.makedirs(os.path.join(folder, "data"), exist_ok=True)
     topic = [t for t in C.TOPICS if t["num"] == a["topic"]][0]
 
     # ---------------------------------------------------------------- README

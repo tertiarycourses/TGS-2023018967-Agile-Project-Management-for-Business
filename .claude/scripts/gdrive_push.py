@@ -296,13 +296,27 @@ def main():
     if not deck_ppt:
         raise SystemExit(f"No versioned slide deck found in {cw}")
     deck_pdf = os.path.splitext(deck_ppt)[0] + ".pdf"
-    lg_docx = newest(os.path.join(cw, "LG-*.docx")); lg_pdf = newest(os.path.join(cw, "LG-*.pdf"))
-    lp_docx = newest(os.path.join(cw, "LP-*.docx")); lp_pdf = newest(os.path.join(cw, "LP-*.pdf"))
+    # Accept BOTH filename conventions: the short "LG-*/LP-*" form and the house
+    # "WSQ - Learner Guide - <Title> - vN" / "WSQ - Lesson Plan - <Title> - vN" form.
+    def newest_any(*patterns):
+        for p in patterns:
+            hit = newest(os.path.join(cw, p))
+            if hit:
+                return hit
+        return None
+
+    lg_docx = newest_any("LG-*.docx", "WSQ - Learner Guide - *.docx")
+    lg_pdf = newest_any("LG-*.pdf", "WSQ - Learner Guide - *v[0-9]*.pdf")
+    lp_docx = newest_any("LP-*.docx", "WSQ - Lesson Plan - *.docx")
+    lp_pdf = newest_any("LP-*.pdf", "WSQ - Lesson Plan - *.pdf")
+    # the learner-facing slide PDF, if built under its own name
+    learner_slides_pdf = newest_any("WSQ - Learner Guide Slides - *.pdf")
     assessments = sorted(glob.glob(os.path.join(repo, "assessment", "*.docx")))
 
     routing = [
         ("Master Trainer Slides", "master trainer", [deck_ppt, deck_pdf]),
-        ("Learner Guide", "learner guide", [lg_docx, lg_pdf, deck_pdf]),
+        ("Learner Guide", "learner guide",
+         [lg_docx, lg_pdf, learner_slides_pdf or deck_pdf]),
         ("Lesson Plan", "lesson plan", [lp_docx, lp_pdf]),
         ("Assessment", "assess", assessments),
     ]
@@ -316,11 +330,13 @@ def main():
         print(f"  {real_name}{' (will be created)' if created else ''}:")
         push_folder(root, folder_path, files, dry)
 
-    labs_dir = os.path.join(repo, "labs")
-    if os.path.isdir(labs_dir):
+    # the activities tree — "activities/" is the current convention, "labs/" the legacy one
+    labs_dir = next((d for d in (os.path.join(repo, "activities"),
+                                 os.path.join(repo, "labs")) if os.path.isdir(d)), None)
+    if labs_dir:
         push_labs(root, labs_dir, dry)
     else:
-        print("  Activities: no labs/ folder found — skipped")
+        print("  Activities: no activities/ or labs/ folder found — skipped")
     print("Done." if not dry else "Dry run complete — nothing was modified.")
 
 

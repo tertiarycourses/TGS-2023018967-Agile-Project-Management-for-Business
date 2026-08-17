@@ -53,6 +53,16 @@ SKILL_ASSETS = os.path.join(os.path.dirname(HERE), "assets")
 CHARTS = os.path.join(REPO, "courseware", "assets")
 USED_ASSETS = set()
 
+# the real tool screenshot used on each activity's tool slide
+TOOL_SHOT = {
+    "Design Thinking": "tool-designthinking.png",
+    "Fishbone": "tool-fishbone.png",
+    "Scrum Board": "tool-scrum.png",
+    "RACI Matrix": "tool-raci.png",
+    "5 Whys": "tool-5whys.png",
+    "Pareto Chart": "tool-paretochart.png",
+}
+
 # ---------------- palette ----------------
 BLUE = RGBColor(0x1F, 0x6F, 0xEB); TEAL = RGBColor(0x10, 0xB9, 0x81)
 AMBER = RGBColor(0xF5, 0x9E, 0x0B); INK = RGBColor(0x16, 0x1B, 0x26)
@@ -179,6 +189,27 @@ def _fit_title(title, size=29):
     if n <= 66: return 25
     if n <= 82: return 22
     return 20
+
+
+def _fit_pt(text, width_in, height_in, base=12.0, floor=8.0):
+    """Return the largest point size (<= base, >= floor) at which `text` still fits
+    inside a width_in x height_in box.
+
+    Text on a slide must never be truncated — an ellipsis silently discards
+    instructional content. We shrink the type instead, using the empirical rule that
+    Arial averages ~0.50 em per character and needs ~1.22 em of leading per line.
+    """
+    t = " ".join(str(text).split())
+    if not t:
+        return base
+    size = base
+    while size > floor:
+        chars_per_line = max(1, int((width_in * 72.0) / (size * 0.50)))
+        lines = -(-len(t) // chars_per_line)          # ceil
+        if lines * (size * 1.22) <= height_in * 72.0:
+            return round(size, 1)
+        size -= 0.5
+    return floor
 
 
 def footer(s):
@@ -540,21 +571,22 @@ def activity_slide(a, topic_code):
     txt(s, Inches(9.9), Inches(0.5), Inches(2.58), Inches(0.46),
         [[(f"ACTIVITY {a['num']}  ·  {a['duration']} MIN", 11.5, WHITE, True)]],
         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    # scenario
+    # scenario — font auto-shrinks to fit; text is NEVER truncated
     rect(s, Inches(0.85), Inches(1.95), Inches(11.63), Inches(1.42), LIGHT)
     rect(s, Inches(0.85), Inches(1.95), Inches(0.1), Inches(1.42), VIOLET)
     txt(s, Inches(1.16), Inches(2.06), Inches(11.2), Inches(0.28), [[("THE SITUATION", 11, VIOLET, True)]])
-    txt(s, Inches(1.16), Inches(2.36), Inches(11.15), Inches(0.95),
-        [[(_ellipsis(a["scenario"], 300), 12, INK, False)]])
+    txt(s, Inches(1.16), Inches(2.34), Inches(11.15), Inches(0.99),
+        [[(a["scenario"], _fit_pt(a["scenario"], 11.15, 0.99, base=12.0, floor=9.0), INK, False)]])
     # what you'll do / produce / tool
-    tiles = [(BLUE, "WHAT YOU'LL DO", _ellipsis(a["desc"], 210)),
-             (TEAL, "YOU'LL PRODUCE", _ellipsis(a["build"], 190)),
-             (AMBER, "DONE WHEN", _ellipsis(a["test"], 190))]
+    tiles = [(BLUE, "WHAT YOU'LL DO", a["desc"]),
+             (TEAL, "YOU'LL PRODUCE", a["build"]),
+             (AMBER, "DONE WHEN", a["test"])]
     tw = Inches(3.71); xs = [Inches(0.85), Inches(4.81), Inches(8.77)]
     for (col, lbl, body), x in zip(tiles, xs):
         rect(s, x, Inches(3.55), tw, Inches(2.28), LIGHT); rect(s, x, Inches(3.55), tw, Inches(0.1), col)
         txt(s, x + Inches(0.24), Inches(3.72), tw - Inches(0.45), Inches(0.32), [[(lbl, 11, col, True)]])
-        txt(s, x + Inches(0.24), Inches(4.08), tw - Inches(0.45), Inches(1.68), [[(body, 10.5, INK, False)]])
+        txt(s, x + Inches(0.24), Inches(4.06), tw - Inches(0.45), Inches(1.72),
+            [[(body, _fit_pt(body, 3.26, 1.72, base=10.5, floor=8.0), INK, False)]])
     # tool + LG pointer band
     rect(s, Inches(0.85), Inches(6.02), Inches(11.63), Inches(0.78), WHITE, line=TEAL)
     rect(s, Inches(0.92), Inches(6.10), Inches(1.3), Inches(0.62), TEAL)
@@ -562,9 +594,10 @@ def activity_slide(a, topic_code):
         [[(f"ACT {a['num']}", 13, WHITE, True)]], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     txt(s, Inches(2.35), Inches(6.10), Inches(9.9), Inches(0.34),
         [[(f"Tool: {a['tool']} — {a['tool_url']}", 12, INK, True)]])
-    txt(s, Inches(2.35), Inches(6.44), Inches(9.9), Inches(0.32),
-        [[(f"LO {a['lo'][-1]}  ·  {a['objective'][:96]}  ·  "
-           f"Full step-by-step: Learner Guide, Activity {a['num']}", 10, GREY, False)]])
+    _strap = (f"LO {a['lo'][-1]}  ·  {a['objective']}  ·  "
+              f"Full step-by-step: Learner Guide, Activity {a['num']}")
+    txt(s, Inches(2.35), Inches(6.42), Inches(9.95), Inches(0.36),
+        [[(_strap, _fit_pt(_strap, 9.95, 0.36, base=10.0, floor=7.0), GREY, False)]])
     footer(s); return s
 
 
@@ -584,10 +617,10 @@ def debrief_slide(a, topic_code):
             align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
         txt(s, Inches(1.74), y + Inches(0.1), Inches(10.5), th - Inches(0.2), [[(d, 13, INK, False)]],
             anchor=MSO_ANCHOR.MIDDLE)
-    rect(s, Inches(0.85), Inches(5.62), Inches(11.63), Inches(1.05), WHITE, line=GREEN)
-    txt(s, Inches(1.15), Inches(5.74), Inches(11.2), Inches(0.3), [[("SUCCESS CRITERION", 11, GREEN, True)]])
-    txt(s, Inches(1.15), Inches(6.06), Inches(11.2), Inches(0.56),
-        [[(_ellipsis(a["test"], 235), 11.5, INK, False)]])
+    rect(s, Inches(0.85), Inches(5.55), Inches(11.63), Inches(1.18), WHITE, line=GREEN)
+    txt(s, Inches(1.15), Inches(5.64), Inches(11.2), Inches(0.3), [[("SUCCESS CRITERION", 11, GREEN, True)]])
+    txt(s, Inches(1.15), Inches(5.95), Inches(11.2), Inches(0.72),
+        [[(a["test"], _fit_pt(a["test"], 11.2, 0.72, base=11.5, floor=8.5), INK, False)]])
     footer(s); return s
 
 
@@ -679,27 +712,17 @@ compare_table("Skills Framework — TSC Knowledge Assessed",
                ["K5", "Types of team composition and formation models", "Topic 3 · Activities 4, 5"],
                ["K6", "Values and principles of Agile methodologies", "Topic 2 · Activity 3"],
                ["K7", "Types of Agile methodologies and practices", "Topic 2 · Activity 3"]],
-              kicker=f"TSC: {C.TSC_TITLE}  ·  {C.TSC_CODE}", accent=VIOLET)
+              kicker=f"TSC: {C.TSC_TITLE}  ·  {C.TSC_CODE}", accent=VIOLET,
+              note="Every knowledge code is taught in a topic AND tested by one question in "
+                   "the Written Assessment.")
 
 for d in (1, 2):
-    day_t = [t for t in C.TOPICS if (t["num"] <= 2 if d == 1 else t["num"] == 3)]
-    items = []
-    if d == 1:
-        items = [("09:30  Welcome & admin", "Digital attendance (AM) · introductions · ground rules · outcomes"),
-                 ("10:00  Topic 1", "Introduction to Agile Project Management (Activities 1–2)"),
-                 ("13:00  Lunch break", "1 hour · digital attendance (PM) on return"),
-                 ("14:00  Topic 2", "Agile Essentials (Activities 3–4)"),
-                 ("18:30  End of Day 1", "Recap and Q&A")]
-    else:
-        items = [("09:30  Digital attendance (AM)", "Recap of Day 1"),
-                 ("09:45  Topic 3", "Agile Project Execution and Tracking (Activities 5–8)"),
-                 ("13:00  Lunch break", "1 hour · digital attendance (PM) on return"),
-                 ("14:00  Topic 3 continued", "Metrics, retrospectives and forecasting"),
-                 ("16:00  Revision & TRAQOM", "Course feedback and TRAQOM survey"),
-                 ("16:30  Assessment", "Digital attendance (Assessment) · WA + Case Study"),
-                 ("18:30  End of Class", "Results and next steps")]
+    # read straight from course_data.DAY_AGENDA — the same single source the Lesson
+    # Plan's detailed schedule is built from, so the deck and the LP cannot disagree.
+    items = C.DAY_AGENDA[d]
     tile_grid(f"Lesson Plan — Day {d}", items,
-              kicker=f"DAY {d} · {C.DAY_THEMES[d].upper()[:70]}", cols=1, size=13.5,
+              kicker=_ellipsis(f"DAY {d} · {C.DAY_THEMES[d].upper()}", 78), cols=1,
+              size=13.5 if len(items) <= 5 else 12.0,
               accent=BLUE if d == 1 else TEAL)
 
 tile_grid("Course Outline", [
@@ -1158,19 +1181,15 @@ for ti, t in enumerate(C.TOPICS):
                                              "CustomerConnect case, so the artefacts you build compound."))
         for a in acts:
             mark(f"act{a['num']}")
-            # the ed-tool browser mock
-            browser_mock(f"The Tool — {a['tool']}", a["tool_url"],
-                         [("Open the tool", "no install, no login"), ("Work as a team", "one screen, shared"),
-                          ("Build the artefact", "the deliverable for this activity"),
-                          ("Export / screenshot", "into your activity worksheet")],
-                         ["Open the URL in your browser",
-                          "Read the situation on the previous slide",
-                          "Follow the numbered steps in the Learner Guide",
-                          "Build the artefact as a team",
-                          "Export it into your worksheet"],
-                         kicker=f"ACTIVITY {a['num']} · TOOL", accent=TEAL,
-                         summary=f"Activity {a['num']} · {a['duration']} minutes · "
-                                 f"Full step-by-step instructions: Learner Guide, Activity {a['num']}.")
+            # the ed-tool: the REAL screenshot of the tool, with how-to tiles beside it
+            img_points(f"The Tool — {a['tool']}", TOOL_SHOT[a["tool"]], [
+                ("Open it in your browser", a["tool_url"]),
+                ("No install, no login", "It runs in the browser. Work on one shared screen as a team."),
+                ("Build the artefact", "The deliverable named on the next slide."),
+                ("Export it", "Screenshot or export into your Activity worksheet."),
+            ], kicker=f"ACTIVITY {a['num']} · TOOL", accent=TEAL,
+                caption=f"Activity {a['num']} · {a['duration']} minutes · "
+                        f"full step-by-step: Learner Guide, Activity {a['num']}")
             activity_slide(a, t["code"])
             debrief_slide(a, t["code"])
 
@@ -1205,7 +1224,7 @@ ncards("The Eight Things Worth Remembering", [
     ("One Accountable per decision", "Two Product Owners is the most common Agile failure."),
     ("Limit WIP to go faster", "Little's Law: cycle time = WIP ÷ throughput."),
     ("Velocity forecasts, never targets", "Reward it and you destroy it."),
-    ("Improvement needs an owner and points", "An action with no capacity is a wish."),
+    ("Actions need owners", "An improvement with no owner and no capacity is a wish."),
 ], kicker="THE TAKEAWAYS", cols=4, accent=BLUE,
    synthesis=("IF YOU REMEMBER ONE THING", "Agile is not a faster way to build what you were told to build. It is a "
                                            "disciplined way to keep finding out what is actually worth building — and to stop building what is not."))

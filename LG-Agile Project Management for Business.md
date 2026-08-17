@@ -471,6 +471,16 @@ Working in teams of 3–4 as the CustomerConnect project team, you use the Desig
 **A completed empathy map and persona for Priya Menon, a reframed problem statement, and a ranked list of the top 3 customer-value features with the reasoning for each.**
 
 
+#### The tool — Design Thinking
+
+Open https://alfredang.github.io/designthinking/ in your browser. This is the screen you will see when the tool loads; follow the numbered steps below from here.
+
+
+![Design Thinking — https://alfredang.github.io/designthinking/](courseware/assets/tool-designthinking.png)
+
+*Design Thinking — https://alfredang.github.io/designthinking/*
+
+
 #### Step-by-step instructions
 
 1. Open the Design Thinking tool at https://alfredang.github.io/designthinking/ and start a new canvas named 'CustomerConnect — Priya Menon'.
@@ -532,6 +542,16 @@ Your team uses the Fishbone (Ishikawa) tool to analyse the problem statement 'Cu
 #### What you will produce
 
 **A completed fishbone diagram with 6 categories and at least 18 causes, each tagged as structural or behavioural, plus a one-page recommendation identifying which causes Agile addresses and which it does not.**
+
+
+#### The tool — Fishbone
+
+Open https://alfredang.github.io/fishbone/ in your browser. This is the screen you will see when the tool loads; follow the numbered steps below from here.
+
+
+![Fishbone — https://alfredang.github.io/fishbone/](courseware/assets/tool-fishbone.png)
+
+*Fishbone — https://alfredang.github.io/fishbone/*
 
 
 #### Step-by-step instructions
@@ -597,6 +617,16 @@ Your team writes user stories from the Activity 1 customer insight, applies INVE
 #### What you will produce
 
 **A product backlog of at least 12 estimated user stories in priority order, a Sprint 1 backlog of about 20 points, one written sprint goal, and a Definition of Done agreed by the whole team.**
+
+
+#### The tool — Scrum Board
+
+Open https://alfredang.github.io/scrum/ in your browser. This is the screen you will see when the tool loads; follow the numbered steps below from here.
+
+
+![Scrum Board — https://alfredang.github.io/scrum/](courseware/assets/tool-scrum.png)
+
+*Scrum Board — https://alfredang.github.io/scrum/*
 
 
 #### Step-by-step instructions
@@ -665,6 +695,16 @@ Your team uses the RACI tool to map 12 real project decisions and activities aga
 **A completed RACI matrix covering 12 activities across 5 roles, a list of the anti-patterns found, and the corrected matrix with the specific change that resolves the developers' escalation.**
 
 
+#### The tool — RACI Matrix
+
+Open https://alfredang.github.io/raci/ in your browser. This is the screen you will see when the tool loads; follow the numbered steps below from here.
+
+
+![RACI Matrix — https://alfredang.github.io/raci/](courseware/assets/tool-raci.png)
+
+*RACI Matrix — https://alfredang.github.io/raci/*
+
+
 #### Step-by-step instructions
 
 1. Open the RACI tool at https://alfredang.github.io/raci/ and create a matrix named 'CustomerConnect Restart — Accountability'.
@@ -728,6 +768,16 @@ Using your Sprint 1 backlog from Activity 3, your team runs the sprint day by da
 #### What you will produce
 
 **A completed 10-day sprint board, a burndown chart with all 10 data points, an impediment log with the resolution of each of the 3 injections, and the actual velocity achieved.**
+
+
+#### The tool — Scrum Board
+
+Open https://alfredang.github.io/scrum/ in your browser. This is the screen you will see when the tool loads; follow the numbered steps below from here.
+
+
+![Scrum Board — https://alfredang.github.io/scrum/](courseware/assets/tool-scrum.png)
+
+*Scrum Board — https://alfredang.github.io/scrum/*
 
 
 #### Step-by-step instructions
@@ -796,6 +846,16 @@ Your team runs a full retrospective in the five stages, using the 5 Whys tool on
 **A completed 5 Whys chain of at least 5 levels reaching an actionable root cause, plus one SMART improvement action with a named owner, a measure, and a place in the Sprint 2 backlog.**
 
 
+#### The tool — 5 Whys
+
+Open https://alfredang.github.io/5whys/ in your browser. This is the screen you will see when the tool loads; follow the numbered steps below from here.
+
+
+![5 Whys — https://alfredang.github.io/5whys/](courseware/assets/tool-5whys.png)
+
+*5 Whys — https://alfredang.github.io/5whys/*
+
+
 #### Step-by-step instructions
 
 1. Set the stage (5 minutes). Each member states in one word how the sprint felt. The Scrum Master states the one rule: we examine the process, not the people.
@@ -862,6 +922,16 @@ Your team loads the 120-defect dataset into the Pareto tool, builds the ranked b
 #### What you will produce
 
 **A completed Pareto chart of 8 defect categories with a cumulative line, the identified vital few, and a Sprint 4 improvement commitment with a numeric target and the projected defect reduction.**
+
+
+#### The tool — Pareto Chart
+
+Open https://alfredang.github.io/paretochart/ in your browser. This is the screen you will see when the tool loads; follow the numbered steps below from here.
+
+
+![Pareto Chart — https://alfredang.github.io/paretochart/](courseware/assets/tool-paretochart.png)
+
+*Pareto Chart — https://alfredang.github.io/paretochart/*
 
 
 #### Step-by-step instructions
@@ -952,6 +1022,16 @@ Your team computes average velocity, builds a forecast range rather than a singl
 #### What you will produce
 
 **A velocity-based forecast range in sprints and calendar dates, a release burndown, a written interpretation of the CFD and control chart naming the bottleneck, and a one-paragraph answer to the committee.**
+
+
+#### The tool — Scrum Board
+
+Open https://alfredang.github.io/scrum/ in your browser. This is the screen you will see when the tool loads; follow the numbered steps below from here.
+
+
+![Scrum Board — https://alfredang.github.io/scrum/](courseware/assets/tool-scrum.png)
+
+*Scrum Board — https://alfredang.github.io/scrum/*
 
 
 #### Step-by-step instructions

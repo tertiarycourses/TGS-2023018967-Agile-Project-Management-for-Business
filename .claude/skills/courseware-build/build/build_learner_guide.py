@@ -26,6 +26,16 @@ from prodoc import (add_cover_page, add_version_control, add_toc, add_page_numbe
 
 ACTIVITIES = DOMAIN1 + DOMAIN2 + DOMAIN3
 
+# the real tool screenshot embedded in each activity's step-by-step section
+TOOL_SHOT = {
+    "Design Thinking": "tool-designthinking.png",
+    "Fishbone": "tool-fishbone.png",
+    "Scrum Board": "tool-scrum.png",
+    "RACI Matrix": "tool-raci.png",
+    "5 Whys": "tool-5whys.png",
+    "Pareto Chart": "tool-paretochart.png",
+}
+
 
 def _find_repo(start):
     env = os.environ.get("COURSE_REPO")
@@ -101,14 +111,14 @@ def para(t, size=11, bold=False, italic=False, color=DARK, after=6, mdout=True):
     return p
 
 
-def bullet(t, size=10.5, mdout=True):
+def bullet(t, size=11, mdout=True):
     p = doc.add_paragraph(style="List Bullet"); p.paragraph_format.space_after = Pt(3)
     r = p.add_run(t); r.font.size = Pt(size)
     if mdout: md(f"- {t}")
     return p
 
 
-def numbered(items, size=10.5):
+def numbered(items, size=11):
     for i, t in enumerate(items, 1):
         p = doc.add_paragraph(style="List Number"); p.paragraph_format.space_after = Pt(4)
         r = p.add_run(t); r.font.size = Pt(size)
@@ -116,7 +126,7 @@ def numbered(items, size=10.5):
     md()
 
 
-def callout(label, text, fill="EEF4FE", labelcolor=BRAND, size=10.5):
+def callout(label, text, fill="EEF4FE", labelcolor=BRAND, size=11):
     t = doc.add_table(rows=1, cols=1); t.style = "Table Grid"
     t.alignment = WD_TABLE_ALIGNMENT.CENTER
     cell = t.rows[0].cells[0]; cell.text = ""
@@ -322,7 +332,7 @@ for t in C.TOPICS:
 
     h2(f"{2 + t['num']}.1  Key Concepts")
     for i, cpt in enumerate(t["concepts"], 1):
-        bullet(cpt, size=10.5)
+        bullet(cpt, size=11)
 
     # topic-specific figures + reference tables
     if t["num"] == 1:
@@ -525,16 +535,22 @@ for a in ACTIVITIES:
     ], widths=[1.35, 5.45], font=9.5)
 
     h3("The situation")
-    para(a["scenario"], size=10.5)
+    para(a["scenario"], size=11)
 
     h3("What you will do")
-    para(a["desc"], size=10.5)
+    para(a["desc"], size=11)
 
     h3("What you will produce")
-    para(a["build"], size=10.5, bold=True)
+    para(a["build"], size=11, bold=True)
+
+    h3(f"The tool — {a['tool']}")
+    para(f"Open {a['tool_url']} in your browser. This is the screen you will see when the "
+         f"tool loads; follow the numbered steps below from here.", size=11)
+    image(TOOL_SHOT[a["tool"]], 6.1,
+          caption=f"{a['tool']} — {a['tool_url']}")
 
     h3("Step-by-step instructions")
-    numbered([s[0] for s in a["steps"]], size=10.5)
+    numbered([s[0] for s in a["steps"]], size=11)
 
     h3("Self-check — are you done?")
     callout("Done when", a["test"], fill="E8F7EE",
@@ -542,13 +558,13 @@ for a in ACTIVITIES:
 
     h3("Debrief — what this activity proves")
     for d in a["debrief"]:
-        bullet(d, size=10.5)
+        bullet(d, size=11)
 
     # activity-specific datasets
     if a["num"] == 7:
         h3("Dataset — CustomerConnect defect causes, Sprints 1–3")
         para("Enter these 8 categories into the Pareto tool. The total must come to 120.",
-             size=10.5)
+             size=11)
         table(["Defect cause category", "Count"], [
             ["Stale or missing feed data", "44"],
             ["Unclear acceptance criteria", "31"],
@@ -722,7 +738,7 @@ table(["Source", "Link", "What it contributes"], SOURCES,
 
 h2("8.1  Recommended Next Courses")
 for r in C.RECOMMENDED:
-    bullet(r, size=10.5)
+    bullet(r, size=11)
 
 h2("8.2  Support")
 table(["Channel", "Detail"], [

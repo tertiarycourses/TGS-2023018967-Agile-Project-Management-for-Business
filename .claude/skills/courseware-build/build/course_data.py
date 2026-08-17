@@ -174,8 +174,26 @@ TOPICS = [
 
 # ------------------------------------------------------------------ day themes
 DAY_THEMES = {
-    1: "The Agile mindset and the essentials — why Agile, the Manifesto, Scrum, Lean and Kanban",
-    2: "Building and running an Agile team — vision, stories, execution, metrics and improvement",
+    1: "The Agile mindset and the essentials",
+    2: "Building and running an Agile team",
+}
+
+# ------------------------------------------------------------------ the day agenda (SINGLE SOURCE)
+# Both the deck's "Lesson Plan — Day N" slides and the Lesson Plan's detailed schedule
+# tables are generated from THIS list, so the two can never contradict each other.
+# (time, headline, detail) — the abridged agenda shown to learners on the slide.
+DAY_AGENDA = {
+    1: [("09:30  Welcome & admin", "Digital attendance (AM) · introductions · ground rules · outcomes"),
+        ("11:00  Topic 1", "Introduction to Agile Project Management (Activities 1–2)"),
+        ("13:00  Lunch break", "1 hour · digital attendance (PM) on return"),
+        ("16:45  Topic 2", "Agile Essentials begins (Activities 3–4 on Day 2)"),
+        ("18:30  End of Day 1", "Recap and Q&A")],
+    2: [("09:30  Digital attendance (AM)", "Recap of Day 1"),
+        ("09:45  Topic 2 continued", "Lean · Kanban · XP · change management (Activities 3–4)"),
+        ("13:00  Lunch break", "1 hour · digital attendance (PM) on return"),
+        ("14:45  Topic 3", "Agile Project Execution and Tracking (Activities 5–8)"),
+        ("18:30  Feedback & TRAQOM", "Course feedback and the mandatory TRAQOM survey"),
+        ("19:00  Final Assessment", "Digital attendance (Assessment) · WA (1 h) + Case Study (1 h)")],
 }
 
 # ------------------------------------------------------------------ assessment

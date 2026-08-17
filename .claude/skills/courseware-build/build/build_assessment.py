@@ -137,10 +137,19 @@ def page2_block(d, instrument, duration="1 hour"):
 
 
 def answer_space(d, n=6):
+    """Ruled answer space drawn with real bottom borders, so a rule can never wrap
+    onto a second line and leave an orphan stub at column 0."""
     line(d, "Answer:", bold=True, size=10.5, color=GREY, after=4)
     for _ in range(n):
-        line(d, "_________________________________________________________________________"
-                "_______________", size=11, color=RGBColor(0xAA, 0xAA, 0xAA), after=7)
+        p = d.add_paragraph()
+        p.paragraph_format.space_after = Pt(12)
+        pPr = p._p.get_or_add_pPr()
+        bdr = OxmlElement("w:pBdr")
+        bottom = OxmlElement("w:bottom")
+        bottom.set(qn("w:val"), "single"); bottom.set(qn("w:sz"), "6")
+        bottom.set(qn("w:space"), "1"); bottom.set(qn("w:color"), "AAAAAA")
+        bdr.append(bottom); pPr.append(bdr)
+        p.add_run("").font.size = Pt(11)
     line(d, "", after=6)
 
 
@@ -512,7 +521,6 @@ def build_written_paper():
         r2 = p.add_run(f"  ({code})"); r2.font.size = Pt(11); r2.bold = True
         r2.font.color.rgb = BRAND
         answer_space(d, 7)
-    official_use(d)
     add_page_numbers(d)
     out = os.path.join(OUT, f"WA (SAQ) - {C.SHORT_TITLE} - {VER}.docx")
     d.save(out); return out
@@ -565,7 +573,6 @@ def build_case_paper():
         r2 = p.add_run(f"  ({code})"); r2.font.size = Pt(11); r2.bold = True
         r2.font.color.rgb = BRAND
         answer_space(d, 10)
-    official_use(d)
     add_page_numbers(d)
     out = os.path.join(OUT, f"CS Assessment - {C.SHORT_TITLE} - {VER}.docx")
     d.save(out); return out

@@ -89,7 +89,7 @@ def para(t, size=11, bold=False, italic=False, color=DARK, after=6):
     return p
 
 
-def bullet(t, size=10.5):
+def bullet(t, size=11):
     p = doc.add_paragraph(style="List Bullet"); p.paragraph_format.space_after = Pt(3)
     r = p.add_run(t); r.font.size = Pt(size)
     return p
@@ -323,18 +323,23 @@ DAY2 = [
      "(K5, A4, A7)",
      "Hands-on\nSimulation\nScrum Board tool",
      f"{SLIDES.get('act5', 99)}–101"],
-    ["17:15 – 17:45", "0.50", "Topic 3: The Five Agile Metrics",
+    ["17:15 – 17:45", "0.50", "Topic 3: The Five Agile Metrics, Waste and Risk",
      "Sprint burndown, release burndown, velocity, control chart and cumulative flow "
      "diagram — what each shows, how to read it, and the anti-patterns. Little's Law "
-     "worked numerically. (A4, A6)",
-     "Trainer-led\nChart interpretation", "86–92"],
-    ["17:45 – 18:30", "0.75", "Activities 6, 7 & 8: Retrospective, Pareto and Forecast",
+     "worked numerically. Root-cause tools, the Pareto principle, value stream mapping, "
+     "risk as anti-value, and technical debt and ownership. (A3, A4, A6, A7)",
+     "Trainer-led\nChart interpretation", "86–98"],
+    ["17:45 – 18:15", "0.50", "Activities 6, 7 & 8: Retrospective, Pareto and Forecast",
      "Activity 6: full retrospective with 5 Whys to a changeable root cause and one SMART "
      "action. Activity 7: Pareto of 120 defects to find the vital few. Activity 8: velocity "
      "forecast as a range, and reading the CFD/control chart to name the bottleneck. "
      "(A3, A4, A6, A7)",
      "Hands-on\nTeam activities\n5 Whys · Pareto · Scrum Board",
      f"{SLIDES.get('act6', 102)}–110"],
+    ["18:15 – 18:30", "0.25", "Topic 3 recap · Course summary and next steps",
+     "Consolidate the three learning outcomes, the eight key takeaways, and the "
+     "recommended follow-on courses. Final Q&A before the feedback survey.",
+     "Recap\nQ&A", "111–115"],
 ]
 
 ASSESS = [
@@ -379,7 +384,7 @@ para("Every activity advances the same running case — HarbourFront Logistics P
 table(["#", "Activity", "Tool", "Min", "LO", "TSC", "Learner Output"],
       [[str(a["num"]), a["title"], a["tool"], str(a["duration"]), a["lo"],
         (a["objective"].split("(")[-1].rstrip(").") if "(" in a["objective"] else "—"),
-        a["build"][:110] + ("…" if len(a["build"]) > 110 else "")] for a in ACTIVITIES],
+        a["build"]] for a in ACTIVITIES],
       widths=[0.28, 1.75, 0.95, 0.35, 0.42, 0.75, 2.35], header_fill="10B981", font=8.5)
 
 # ------------------------------------------------------------------ 5. assessment plan

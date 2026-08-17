@@ -1,0 +1,43 @@
+- generic [active] [ref=f2e1]:
+  - button "Toggle theme" [ref=f2e2] [cursor=pointer]: 🌗
+  - generic [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - generic [ref=f2e5]:
+        - generic [ref=f2e6]:
+          - generic [ref=f2e7]: ⚡
+          - generic [ref=f2e8]: Scrum Agile Transformation Studio
+        - heading "Run great sprints. Transform your team." [level=1] [ref=f2e9]: Run great sprints.Transform your team.
+        - paragraph [ref=f2e10]: A collaborative Scrum studio for Product Owners, Scrum Masters, Agile Coaches and Development Teams. Plan sprints, run ceremonies, track velocity, and drive continuous improvement — together, in real time.
+        - generic [ref=f2e11]:
+          - generic [ref=f2e12]: Real-time collaboration
+          - generic [ref=f2e13]: Planning Poker
+          - generic [ref=f2e14]: Burndown
+          - generic [ref=f2e15]: Retrospectives
+          - generic [ref=f2e16]: QR join
+          - generic [ref=f2e17]: Mobile
+      - generic [ref=f2e18]:
+        - heading "Start a workspace" [level=2] [ref=f2e19]
+        - generic [ref=f2e20]:
+          - generic [ref=f2e21]: Your display name
+          - textbox "Your display name" [ref=f2e22]:
+            - /placeholder: e.g. Alex (PO)
+        - generic [ref=f2e23]:
+          - generic [ref=f2e24]: Your role
+          - combobox "Your role" [ref=f2e25]:
+            - option "Product Owner" [selected]
+            - option "Scrum Master"
+            - option "Developer"
+            - option "Stakeholder"
+            - option "Agile Coach"
+        - button "Create Workspace" [ref=f2e27] [cursor=pointer]
+        - generic [ref=f2e29]:
+          - generic [ref=f2e30]: Join with Workspace ID
+          - generic [ref=f2e31]:
+            - textbox "Join with Workspace ID" [ref=f2e32]:
+              - /placeholder: e.g. spr-7f2a
+            - button "Join" [ref=f2e33] [cursor=pointer]
+        - paragraph [ref=f2e34]: "Tip: scan a teammate's QR code on mobile to join instantly."
+    - generic [ref=f2e35]:
+      - text: Powered by
+      - link "Tertiary Infotech Academy Pte Ltd" [ref=f2e36] [cursor=pointer]:
+        - /url: https://www.tertiarycourses.com.sg/
