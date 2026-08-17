@@ -55,3 +55,8 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
+
+# Playwright MCP session artefacts (console logs, page snapshots)
+.playwright-mcp/
+# stray screenshots at the repo root — the real ones live in courseware/assets/
+/tool-*.png
