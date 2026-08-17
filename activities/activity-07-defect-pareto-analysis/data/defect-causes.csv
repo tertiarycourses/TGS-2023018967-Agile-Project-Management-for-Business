@@ -1,0 +1,9 @@
+Defect cause category,Count
+Stale or missing feed data,44
+Unclear acceptance criteria,31
+Environment and configuration drift,17
+Carrier API contract changes,11
+UI validation gaps,8
+Access and permission errors,5
+Report formatting,3
+Documentation errors,1

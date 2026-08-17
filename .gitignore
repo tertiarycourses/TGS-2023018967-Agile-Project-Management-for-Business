@@ -1,0 +1,57 @@
+# ---------------------------------------------------------------------------
+# CONFIDENTIAL — never push the assessment set to GitHub.
+# The question papers and answer keys are trainer/assessor material and live on
+# Google Drive + the LMS only.
+# ---------------------------------------------------------------------------
+assessment/
+**/assessment/
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.key
+*_api_key
+lms_tms_api_key
+credentials.json
+token.json
+service-account*.json
+
+# Reference source material (large third-party decks, not ours to redistribute)
+reference/
+
+# Archived superseded courseware versions
+courseware/archive/
+
+# Archives — never upload zip/rar bundles
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+
+# Office lock / temp files
+~$*
+.~lock.*#
+*.tmp
+
+# macOS / editor junk
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/

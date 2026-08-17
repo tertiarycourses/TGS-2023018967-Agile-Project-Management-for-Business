@@ -1,0 +1,8 @@
+ID,User story,Notes
+CC-01,"As a warehouse operations executive, I want a live customs status on each inbound shipment, so that I can re-sequence today's production.",From Activity 1 — highest customer value
+CC-02,"As a warehouse operations executive, I want an alert before a shipment is delayed, so that I can warn production early.",From Activity 1
+CC-03,"As a warehouse operations executive, I want one screen showing all my inbound shipments, so that I do not click through six pages.",From Activity 1
+CC-04,"As a customer admin, I want to log in securely, so that only my company's shipments are visible.",Enabling story
+CC-05,"As the system, I need a carrier data feed, so that shipment status is current.",Enabling story — see the Activity 6 root cause
+CC-06,"As the system, I need an alerting service, so that delay alerts can be sent.",Enabling story
+...,Add at least 6 more stories in your team,Target: 12+ stories total
