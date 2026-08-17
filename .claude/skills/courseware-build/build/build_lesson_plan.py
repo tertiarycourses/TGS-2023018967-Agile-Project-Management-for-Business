@@ -296,7 +296,7 @@ DAY2 = [
      "estimate with planning poker, order with MoSCoW, write one sprint goal and load "
      "Sprint 1 to 20 points. Trainer acts as Product Owner. (K6, K7, A3)",
      "Hands-on\nTeam activity\nScrum Board tool\nPlanning poker",
-     f"{SLIDES.get('act3', 67)}–69"],
+     f"66–69"],
     ["12:45 – 13:00", "0.25", "Activity 3 debrief",
      "Why the sprint goal is the artefact that makes a sprint reviewable, and why splitting "
      "by workflow step beats splitting by technical layer.", "Debrief", "69"],

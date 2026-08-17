@@ -647,10 +647,10 @@ tile_grid("Digital Attendance (Mandatory)", [
     ("75% minimum", "A minimum of 75% attendance is required to be eligible for assessment and funding."),
 ], kicker="ADMIN · TRAQOM & ATTENDANCE", cols=2, size=14)
 
-trainer_slide("ADMIN · YOUR TRAINER (TEMPLATE)", "________________________",
+trainer_slide("ADMIN · YOUR TRAINER (TEMPLATE)", "Your Trainer",
               "WSQ Adult Educator  ·  Agile Practitioner",
               [("Name", ""), ("Certifications", ""), ("Industry experience", ""),
-               ("Agile experience", ""), ("Contact", "")], "TR", accent=GREY)
+               ("Agile experience", ""), ("Contact", "")], "?", accent=GREY)
 
 trainer_slide("ADMIN · YOUR TRAINER", C.TRAINER,
               "PhD (NUS) · MEng (NTU) · MBA · ACTA/DACE certified adult educator",

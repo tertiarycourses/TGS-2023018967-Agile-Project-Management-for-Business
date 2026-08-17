@@ -51,9 +51,9 @@ never drift apart.
 ├── courseware/                     the delivered artifacts (one live version)
 │   ├── WSQ - Master Trainer Slides - ... - v9.0.pptx   120 slides
 │   ├── WSQ - Master Trainer Slides - ... - v9.0.pdf
-│   ├── WSQ - Lesson Plan - ...      - v9.0.docx/.pdf   14 pages
-│   ├── WSQ - Learner Guide - ...    - v9.0.docx/.pdf   47 pages
-│   └── assets/                     20 generated diagrams & charts
+│   ├── WSQ - Lesson Plan - ...      - v9.0.docx/.pdf   15 pages
+│   ├── WSQ - Learner Guide - ...    - v9.0.docx/.pdf   53 pages
+│   └── assets/                     20 diagrams/charts + 6 tool screenshots
 │
 ├── activities/                     8 activities, one folder each
 │   ├── activity-01-empathise-customer-design-thinking/
