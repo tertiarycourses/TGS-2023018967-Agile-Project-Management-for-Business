@@ -20,6 +20,7 @@ never drift apart.
 | | |
 |---|---|
 | **Course code** | TGS-2023018967 |
+| **Programme** | WSQ |
 | **Duration** | 2 days · 16 instructional hours (+ 2 hours assessment) |
 | **Level** | Beginner |
 | **TSC** | Business Agility · ICT-BIN-4038-1.1 |
@@ -49,7 +50,7 @@ never drift apart.
 ```
 .
 ├── courseware/                     the delivered artifacts (one live version)
-│   ├── WSQ - Master Trainer Slides - ... - v9.0.pptx   120 slides
+│   ├── WSQ - Master Trainer Slides - ... - v9.0.pptx   121 slides
 │   ├── WSQ - Master Trainer Slides - ... - v9.0.pdf
 │   ├── WSQ - Lesson Plan - ...      - v9.0.docx/.pdf   15 pages
 │   ├── WSQ - Learner Guide - ...    - v9.0.docx/.pdf   53 pages
